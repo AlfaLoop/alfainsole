@@ -191,7 +191,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private void initPreferencesShared() {
         sharedPref = context.getSharedPreferences(getString(R.string.pref_file_key),
                 Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPref.edit();
+        editor = sharedPref.edit();
     }
 
     private void checkPreferencesExisted() {
