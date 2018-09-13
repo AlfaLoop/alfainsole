@@ -1,0 +1,56 @@
+<resources>
+    <string name="app_name">AlfaInsole</string>
+
+    <string name="app_company_name">AlfaLoop Co.,Ltd</string>
+    <string name="app_company_copyright">Copyright©2018 AlfaLoop</string>
+    <string name="title_about_version">　Version 1.0.0</string>
+    <string name="title_about_license">　LICENSE</string>
+    <string name="title_about_open_source">　Open source</string>
+
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+
+    <string name="ble_donot_support">BLE don\'t support</string>
+    <string name="ble_alfaone_device_name">AlfaOne</string>
+    <string name="ble_nsensor_device_name">N+Sensor</string>
+
+    <string name="scan_view_addr_key">addrs</string>
+    <string name="scan_view_name_key">names</string>
+    <string name="connected_view_name_key">names</string>
+
+    <string name="checkbox_default_msg">Some text</string>
+    <string name="btn_connect">Connect</string>
+    <string name="btn_disconnect">Disconnect</string>
+    <string name="btn_start_recording">Record</string>
+    <string name="btn_stop_recording">Stop recording</string>
+    <string name="rssi_text_view_default_msg">RSSI</string>
+
+    <string name="insole_device_name_titile">Device Name</string>
+    <string name="insole_pressure_titile">Pressure</string>
+    <string name="insole_accel_titile">Accel</string>
+    <string name="insole_gyro_titile">Gyro</string>
+
+    <string name="disconnect_msg">Disconnected.</string>
+    <string name="started_scan_msg">Start scan near devices.</string>
+    <string name="discoveried_1_insole_msg">Insole 1 discovried.</string>
+    <string name="start_listening_1_insole_msg">Start listening insole.</string>
+    <string name="discoveried_2_insole_msg">Insole 2 discovried.</string>
+    <string name="start_listening_2_insoles_msg">Start listening insoles.</string>
+    <string name="pressure_side_switch_msg">Pressure views switched.</string>
+    <string name="select_wrong_device_qty_msg">Please select right qty.</string>
+    <string name="select_wrong_device_pair_msg">Please select right pair of insole.</string>
+    <string name="title_activity_settings">Settings</string>
+    <string name="title_activity_about">About</string>
+
+    <string name="title_scan_time">Scan period(s)</string>
+    <string name="title_auto_scan">Auto start scan</string>
+    <string name="title_button_save">Save</string>
+    <string name="title_save_success">Save success</string>
+    <string name="title_save_fail">Save fail</string>
+
+    <!-- Strings related to Settings -->
+    <string name="pref_file_key">pref_file_key</string>
+    <string name="pref_auto_scan">pref_auto_scan</string>
+    <string name="pref_scan_time">pref_scan_time</string>
+</resources>
