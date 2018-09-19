@@ -36,6 +36,7 @@
     <string name="discoveried_1_insole_msg">Insole 1 discovried.</string>
     <string name="start_listening_1_insole_msg">Start listening insole.</string>
     <string name="discoveried_2_insole_msg">Insole 2 discovried.</string>
+    <string name="discoveried_2_insole_fail_msg">Insole 2 discovry fail.</string>
     <string name="start_listening_2_insoles_msg">Start listening insoles.</string>
     <string name="pressure_side_switch_msg">Pressure views switched.</string>
     <string name="select_wrong_device_qty_msg">Please select right qty.</string>

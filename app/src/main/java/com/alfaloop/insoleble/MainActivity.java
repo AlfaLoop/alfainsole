@@ -345,6 +345,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         connectionScope2.registDiscoveryProfileCompleteCallback(result -> {
             if (result == BleConnectionScope.RESULT_SUCCESS) {
                 makeToastMessageWithHandler(R.string.discoveried_2_insole_msg, SHOW_SHORT);
+            } else if (result == BleConnectionScope.RESULT_FAIL) {
+                destroyConnectionsScope();
+                handler.post(disconnectButtonTask);
+                makeToastMessageWithHandler(R.string.discoveried_2_insole_fail_msg, SHOW_SHORT);
             }
         });
         connectionScope2.registEnabledNotifyCompleteCallback(result -> {
