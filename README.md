@@ -19,7 +19,12 @@ It also support visualize pressure data and record sensors data.
   
 - Android Studio 3.1.4(suggest, or Latest)
   
-- Insole harware [AlfaOne]() and [NikePlus]()
+- Insole harware [AlfaOne](https://app.alfaloop.com/store/) and [NikePlus](https://app.alfaloop.com/store/)
+  
+  
+## APK releases
+  
+- [V1.0.0](https://github.com/AlfaLoop/alfainsole/releases)
   
   
 ## Functions
