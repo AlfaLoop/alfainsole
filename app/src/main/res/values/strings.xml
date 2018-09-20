@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">AlfaInsole</string>
 
-    <string name="app_company_name">AlfaLoop Co.,Ltd</string>
+    <string name="app_company_name">AlfaLoop Tech Co.,Ltd</string>
     <string name="app_company_copyright">Copyright©2018 AlfaLoop</string>
     <string name="title_about_version">　Version 1.0.0</string>
     <string name="title_about_license">　LICENSE</string>
