@@ -75,6 +75,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private boolean isConnected = false;
     private boolean isScanning = false;
     private boolean isRecording = false;
+    private boolean showTitleRow = true;
     private byte interactiveDeviceType = 0;
     private SharedPreferences sharedPref = null;
     private SharedPreferences.Editor editor = null;
@@ -92,13 +93,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         initMainActivityViewComponents();
         initBleModule();
         checkPreferencesExisted();
-        loadPreferencesAutoScanSet();
     }
 
     @Override
     public void onBackPressed() {
         if(!isConnected)
             MainActivity.this.finish();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        loadPreferencesNeedTitleRowRecord();
     }
 
     @Override
@@ -200,14 +206,24 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if(result == -1) {
             editor.putInt(getString(R.string.pref_scan_time), BleConnConfig.SCAN_TIME_S);
             editor.putInt(getString(R.string.pref_auto_scan), 0);
+            editor.putInt(getString(R.string.pref_title_row_needing), 1);
             editor.commit();
         }
     }
 
-    private void loadPreferencesAutoScanSet() {
+    private void loadPreferencesSettings() {
         int result = sharedPref.getInt(getString(R.string.pref_auto_scan), 0);
         if(result > 0)
             onRefresh();
+        loadPreferencesNeedTitleRowRecord();
+    }
+
+    private void loadPreferencesNeedTitleRowRecord() {
+        int result = sharedPref.getInt(getString(R.string.pref_title_row_needing), 1);
+        if(result == 0)
+            showTitleRow = false;
+        else
+            showTitleRow = true;
     }
 
     private void scanLeDevice(final boolean enable) {
@@ -472,25 +488,28 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 String ts = tsLong.toString();
                 csw = FileUtils.CsvWriter.initWriter(ts, FileUtils.CsvWriter.DELETE_FILE_IF_EXIST);
 
-                String title = Alfaone.FIELD_TITLE_RAW;
-                if(scanViewFragment.getSelectedDevicesCount() == 1) {
-                    if (interactiveDeviceType == Alfaone.DEVICE_TYPE)
-                        title = Alfaone.FIELD_TITLE_RAW;
-                    else if (interactiveDeviceType == NikePlus.DEVICE_TYPE)
-                        title = NikePlus.FIELD_TITLE_RAW;
-                } else {
-                    if (interactiveDeviceType == Alfaone.DEVICE_TYPE)
-                        title = Alfaone.FIELD_TITLE_RAW.concat(",").concat(Alfaone.FIELD_TITLE_RAW);
-                    else if (interactiveDeviceType == NikePlus.DEVICE_TYPE)
-                        title = NikePlus.FIELD_TITLE_RAW.concat(",").concat(NikePlus.FIELD_TITLE_RAW);
-                }
+                if (showTitleRow) {
+                    String title = Alfaone.FIELD_TITLE_RAW;
+                    if (scanViewFragment.getSelectedDevicesCount() == 1) {
+                        if (interactiveDeviceType == Alfaone.DEVICE_TYPE)
+                            title = Alfaone.FIELD_TITLE_RAW;
+                        else if (interactiveDeviceType == NikePlus.DEVICE_TYPE)
+                            title = NikePlus.FIELD_TITLE_RAW;
+                    } else {
+                        if (interactiveDeviceType == Alfaone.DEVICE_TYPE)
+                            title = Alfaone.FIELD_TITLE_RAW.concat(",").concat(Alfaone.FIELD_TITLE_RAW);
+                        else if (interactiveDeviceType == NikePlus.DEVICE_TYPE)
+                            title = NikePlus.FIELD_TITLE_RAW.concat(",").concat(NikePlus.FIELD_TITLE_RAW);
+                    }
 
-                try {
-                    csw.insertDateRow(title);
-                    isRecording = true;
-                } catch (IOException e) {
-                    e.printStackTrace();
+                    try {
+                        csw.insertDateRow(title);
+
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
+                isRecording = true;
             }
         }
     };

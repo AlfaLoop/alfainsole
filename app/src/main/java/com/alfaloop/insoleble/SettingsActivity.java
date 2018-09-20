@@ -20,6 +20,7 @@ public class SettingsActivity extends AppCompatActivity {
     private SharedPreferences.Editor editor = null;
     private EditText scanTimeEditText = null;
     private Switch autoScanSwitch = null;
+    private Switch needRecordTitle = null;
     private Button saveButton = null;
 
     @Override
@@ -40,10 +41,12 @@ public class SettingsActivity extends AppCompatActivity {
     private void initViewComponents() {
         scanTimeEditText = (EditText)findViewById(R.id.scan_time_s_edittext);
         autoScanSwitch = (Switch)findViewById(R.id.auto_scan_switch);
+        needRecordTitle = (Switch)findViewById(R.id.need_record_title);
         saveButton = (Button)findViewById(R.id.save_setting_button);
 
         scanTimeEditText.setText(String.valueOf(getScanTimeS()));
         autoScanSwitch.setChecked(isAutoScanSet());
+        needRecordTitle.setChecked(isNeedRecordTitleSet());
         saveButton.setOnClickListener(saveButtonTask);
     }
 
@@ -52,6 +55,7 @@ public class SettingsActivity extends AppCompatActivity {
         public void onClick(View view) {
             saveScanTimeS();
             saveAutoScan();
+            saveNeedRecordTitle();
             commit();
             toastResult();
         }
@@ -70,6 +74,14 @@ public class SettingsActivity extends AppCompatActivity {
         editor.putInt(getString(R.string.pref_auto_scan), result);
     }
 
+    private void saveNeedRecordTitle() {
+        boolean isChecked = needRecordTitle.isChecked();
+        int result = 0;
+        if(isChecked)
+            result = 1;
+        editor.putInt(getString(R.string.pref_title_row_needing), result);
+    }
+
     private void commit() {
         editor.commit();
     }
@@ -77,6 +89,14 @@ public class SettingsActivity extends AppCompatActivity {
     private void toastResult() {
         Toast.makeText(SettingsActivity.this, getString(R.string.title_save_success),
                 Toast.LENGTH_SHORT).show();
+    }
+
+    private boolean isNeedRecordTitleSet() {
+        int result = sharedPref.getInt(getString(R.string.pref_title_row_needing), 1);
+        if(result > 0)
+            return true;
+        else
+            return false;
     }
 
     private boolean isAutoScanSet() {
