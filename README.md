@@ -47,6 +47,7 @@ It also support visualize pressure data and record sensors data.
   
 ![](./asset/start_view.jpg)  
 Click center of the screen or pull down to scan near devices.  
+  
 ![](./asset/scan_list.jpg)
 ![](./asset/visualization.jpg)  
 ![](./asset/navigater.jpg)
